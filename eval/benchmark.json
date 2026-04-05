@@ -1,0 +1,7 @@
+[
+  {
+    "question": "What is the refund policy?",
+    "expected_doc": "refund_policy.txt",
+    "expected_answer_contains": "30 days"
+  }
+]

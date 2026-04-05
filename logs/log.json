@@ -1,0 +1,8 @@
+{
+  "question": "What is the refund policy?",
+  "retrieved_docs": [
+    "refund_policy.txt"
+  ],
+  "context": "Customers can request a refund within 30 days of purchase with proof of payment.\n",
+  "answer": "Customers can request a refund within 30 days of purchase with proof of payment.\n"
+}
