@@ -152,3 +152,15 @@ To test robustness, a conflicting document was added under `data/contaminated/`:
 
 This stage is used to simulate how conflicting or low-quality documents can degrade retrieval quality and lead to incorrect answers.
 
+\## Before vs After
+
+
+
+| Condition | Retrieval Accuracy | Answer Accuracy |
+
+|-----------|--------------------|-----------------|
+
+| Clean      | 1.0                | 1.0             |
+
+| Contaminated | 0.0              | 0.0             |
+
