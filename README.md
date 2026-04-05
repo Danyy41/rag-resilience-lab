@@ -140,3 +140,15 @@ The next phase introduces controlled document contamination, measures its impact
 
 This project investigates how RAG systems respond to corrupted or adversarial data and provides a structured framework to evaluate and improve their reliability.
 
+\## Stage 4 — Controlled Contamination
+
+To test robustness, a conflicting document was added under `data/contaminated/`:
+
+
+
+`refund\_policy\_fake.txt` → “Customers can request a refund within 90 days without proof of payment.”
+
+
+
+This stage is used to simulate how conflicting or low-quality documents can degrade retrieval quality and lead to incorrect answers.
+
