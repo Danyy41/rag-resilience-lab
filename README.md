@@ -190,5 +190,17 @@ This prevents malicious or low-quality documents from influencing the retrieval 
 
 | Defended     | 1.0                | 1.0             |
 
+\## Threat Model
+
+
+
+This project assumes an adversary can introduce conflicting or low-quality documents into the retrieval corpus. The attack goal is to influence retrieval rankings so that incorrect documents are selected and misleading answers are returned. The defense assumes trusted and untrusted data can be separated at retrieval time.
+
+\## Why the Defense Works
+
+
+
+The failure occurs because the retriever treats all documents as equally eligible for retrieval. By restricting retrieval to trusted sources, the system removes the attack path where conflicting documents can influence similarity search and downstream answers.
+
 
 
