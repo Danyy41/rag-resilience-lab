@@ -2,8 +2,8 @@ from ingest import build_index
 import numpy as np
 import json
 
-def answer_question(question):
-    index, model, docs, filenames = build_index()
+def answer_question(question, data_path="../data/clean"):
+    index, model, docs, filenames = build_index(data_path)
 
     query_embedding = model.encode([question])
     query_embedding = np.array(query_embedding, dtype="float32")
@@ -21,6 +21,7 @@ def answer_question(question):
 
     log = {
         "question": question,
+        "dataset": data_path,
         "retrieved_docs": retrieved_docs,
         "context": context,
         "answer": context

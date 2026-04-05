@@ -7,11 +7,11 @@ sys.path.append(os.path.join(os.path.dirname(__file__), "..", "app"))
 from ingest import build_index
 import numpy as np
 
-def evaluate():
+def evaluate(data_path="../data/clean", output_file="results.json"):
     with open("benchmark.json", "r", encoding="utf-8") as f:
         benchmark = json.load(f)
 
-    index, model, docs, filenames = build_index()
+    index, model, docs, filenames = build_index(data_path)
 
     results = []
     correct_retrieval = 0
@@ -40,6 +40,7 @@ def evaluate():
 
         results.append({
             "question": question,
+            "dataset": data_path,
             "expected_doc": expected_doc,
             "retrieved_doc": top_doc,
             "retrieval_correct": retrieval_ok,
@@ -49,16 +50,18 @@ def evaluate():
         })
 
     summary = {
+        "dataset": data_path,
         "total_questions": len(benchmark),
         "retrieval_accuracy": correct_retrieval / len(benchmark),
         "answer_accuracy": correct_answer / len(benchmark),
         "results": results
     }
 
-    with open("results.json", "w", encoding="utf-8") as f:
+    with open(output_file, "w", encoding="utf-8") as f:
         json.dump(summary, f, indent=2)
 
     print("\nEvaluation complete.")
+    print(f"Dataset: {data_path}")
     print(f"Total questions: {len(benchmark)}")
     print(f"Retrieval accuracy: {correct_retrieval}/{len(benchmark)}")
     print(f"Answer accuracy: {correct_answer}/{len(benchmark)}")

@@ -3,22 +3,20 @@ from sentence_transformers import SentenceTransformer
 import faiss
 import numpy as np
 
-DATA_PATH = "../data/clean"
-
-def load_documents():
+def load_documents(data_path):
     docs = []
     filenames = []
 
-    for file in os.listdir(DATA_PATH):
+    for file in os.listdir(data_path):
         if file.endswith(".txt"):
-            with open(os.path.join(DATA_PATH, file), "r", encoding="utf-8") as f:
+            with open(os.path.join(data_path, file), "r", encoding="utf-8") as f:
                 docs.append(f.read())
                 filenames.append(file)
 
     return docs, filenames
 
-def build_index():
-    docs, filenames = load_documents()
+def build_index(data_path="../data/clean"):
+    docs, filenames = load_documents(data_path)
 
     model = SentenceTransformer("all-MiniLM-L6-v2")
     embeddings = model.encode(docs)

@@ -1,0 +1,18 @@
+{
+  "dataset": "../data/contaminated",
+  "total_questions": 1,
+  "retrieval_accuracy": 0.0,
+  "answer_accuracy": 0.0,
+  "results": [
+    {
+      "question": "What is the refund policy?",
+      "dataset": "../data/contaminated",
+      "expected_doc": "refund_policy.txt",
+      "retrieved_doc": "refund_policy_fake.txt",
+      "retrieval_correct": false,
+      "expected_answer_contains": "30 days",
+      "answer": "Customers can request a refund within 90 days without proof of payment.",
+      "answer_correct": false
+    }
+  ]
+}
