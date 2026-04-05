@@ -164,3 +164,31 @@ This stage is used to simulate how conflicting or low-quality documents can degr
 
 | Contaminated | 0.0              | 0.0             |
 
+\## Stage 5 — Defense (Trusted Source Filtering)
+
+
+
+A simple defense was introduced by restricting retrieval to trusted data sources (`data/clean`).
+
+
+
+This prevents malicious or low-quality documents from influencing the retrieval pipeline.
+
+
+
+\### Results
+
+
+
+| Condition    | Retrieval Accuracy | Answer Accuracy |
+
+|--------------|--------------------|-----------------|
+
+| Clean        | 1.0                | 1.0             |
+
+| Contaminated | 0.0                | 0.0             |
+
+| Defended     | 1.0                | 1.0             |
+
+
+
