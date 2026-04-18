@@ -1,11 +1,49 @@
 \# RAG Resilience Lab
 
+A research-oriented framework for systematically evaluating how retrieval-augmented generation (RAG) systems fail under adversarial conditions.
+
+This project investigates failure modes including:
+- prompt injection via retrieved documents
+- context poisoning within the knowledge base
+- retrieval manipulation that surfaces adversarial or misleading content
+
+The goal is to quantify when and how a RAG pipeline deviates from intended behavior under adversarial influence.
 
 
-\## Overview
+## Overview
 
-This project implements a Retrieval-Augmented Generation (RAG) pipeline and evaluates its robustness under controlled conditions. It includes document ingestion, embedding generation using sentence-transformers, vector search with FAISS, retrieval with answer generation, logging for traceability, and benchmark-based evaluation. The goal is to analyze how RAG systems behave under normal and adversarial data conditions.
+This project builds a retrieval-augmented generation (RAG) pipeline and uses it as a controlled environment to study adversarial behavior.
 
+The system includes:
+- document ingestion and embedding (Sentence Transformers)
+- vector search (FAISS)
+- retrieval + answer generation pipeline
+- logging and experiment tracking
+
+On top of this pipeline, the project runs structured adversarial experiments to evaluate:
+
+- how injected or poisoned context influences model outputs
+- when retrieved information overrides system-level instructions
+- how retrieval quality degrades under adversarial conditions
+
+The objective is not only to build a RAG system, but to analyze its failure modes through repeatable experiments and measurable outcomes.
+
+## Threat Model
+
+This project evaluates RAG failures under an adversarial setting where an attacker can influence retrieved context without modifying model weights.
+
+**Attacker capabilities**
+- inject malicious or misleading documents into the retrieval corpus
+- craft queries that increase the chance of retrieving adversarial content
+- exploit the model’s tendency to prioritize retrieved instructions over intended behavior
+
+**Defender assumptions**
+- the base model and embeddings are fixed
+- retrieval pipeline behavior can be observed through logs and outputs
+- attacks are evaluated at the application layer rather than through model fine-tuning
+
+**Security objective**
+- measure whether the pipeline remains aligned with intended behavior when exposed to adversarial context
 
 
 \## Project Structure
