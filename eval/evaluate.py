@@ -15,6 +15,7 @@ def evaluate(data_path="../data/clean", output_file="results.json", attack_type=
     with open(benchmark_path, "r", encoding="utf-8") as f:
         benchmark = json.load(f)
 
+    base_dir = os.path.dirname(__file__)
     data_path = os.path.normpath(os.path.join(base_dir, data_path))
 
     index, model, docs, filenames = build_index(data_path)
