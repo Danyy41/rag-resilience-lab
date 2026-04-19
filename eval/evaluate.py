@@ -71,7 +71,8 @@ def evaluate(data_path="../data/clean", output_file="results.json", attack_type=
         "results": results
     }
 
-    with open(output_file, "w", encoding="utf-8") as f:
+ benchmark_path = os.path.join(os.path.dirname(__file__), "benchmark.json")
+with open(benchmark_path, "r", encoding="utf-8") as f:
         json.dump(summary, f, indent=2)
 
     print("\nEvaluation complete.")
