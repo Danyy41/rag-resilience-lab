@@ -9,9 +9,13 @@ import numpy as np
 
 
 def evaluate(data_path="../data/clean", output_file="results.json", attack_type="none"):
-    benchmark_path = os.path.join(os.path.dirname(__file__), "benchmark.json")
+    base_dir = os.path.dirname(__file__)
+
+    benchmark_path = os.path.join(base_dir, "benchmark.json")
     with open(benchmark_path, "r", encoding="utf-8") as f:
         benchmark = json.load(f)
+
+    data_path = os.path.normpath(os.path.join(base_dir, data_path))
 
     index, model, docs, filenames = build_index(data_path)
 
