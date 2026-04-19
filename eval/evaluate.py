@@ -75,7 +75,7 @@ def evaluate(data_path="../data/clean", output_file="results.json", attack_type=
         "results": results
     }
 
-    output_path = os.path.join(os.path.dirname(__file__), output_file)
+    output_path = os.path.join(base_dir, output_file)
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(summary, f, indent=2)
 
