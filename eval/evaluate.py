@@ -2,15 +2,15 @@ import json
 import os
 import sys
 
-sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
-
+sys.path.append(os.path.join(os.path.dirname(__file__), "..", "app"))
 
 from ingest import build_index
 import numpy as np
 
 
 def evaluate(data_path="../data/clean", output_file="results.json", attack_type="none"):
-    with open("benchmark.json", "r", encoding="utf-8") as f:
+    benchmark_path = os.path.join(os.path.dirname(__file__), "benchmark.json")
+    with open(benchmark_path, "r", encoding="utf-8") as f:
         benchmark = json.load(f)
 
     index, model, docs, filenames = build_index(data_path)
@@ -57,9 +57,9 @@ def evaluate(data_path="../data/clean", output_file="results.json", attack_type=
         })
 
     total = len(benchmark)
-    retrieval_accuracy = correct_retrieval / total
-    answer_accuracy = correct_answer / total
-    attack_success_rate = attack_failures / total
+    retrieval_accuracy = correct_retrieval / total if total > 0 else 0.0
+    answer_accuracy = correct_answer / total if total > 0 else 0.0
+    attack_success_rate = attack_failures / total if total > 0 else 0.0
 
     summary = {
         "dataset": data_path,
@@ -71,8 +71,8 @@ def evaluate(data_path="../data/clean", output_file="results.json", attack_type=
         "results": results
     }
 
- benchmark_path = os.path.join(os.path.dirname(__file__), "benchmark.json")
-with open(benchmark_path, "r", encoding="utf-8") as f:
+    output_path = os.path.join(os.path.dirname(__file__), output_file)
+    with open(output_path, "w", encoding="utf-8") as f:
         json.dump(summary, f, indent=2)
 
     print("\nEvaluation complete.")
