@@ -4,7 +4,6 @@ import os
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 sys.path.append(os.path.dirname(__file__))
 
-from attacks.context_poisoning import inject_conflicting_refund_policy
 from evaluate import evaluate
 
 if __name__ == "__main__":
